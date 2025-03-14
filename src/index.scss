@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+// Variáveis
+$primary-font: "Poppins", sans-serif;
+$secondary-font: "Roboto", sans-serif;
+
+$header-bg: #e7dfc6;
+$text-color: #4d4d4d;
+$nav-link-color: #2274a5;
+$transition-speed: 0.3s;
+
+// Reset e Estilos Globais
+* {
+  font-family: $primary-font;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// Header
+header {
+  height: 10rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  background-color: $header-bg;
+  padding: 0 2rem;
+
+  // Primeira coluna: logo à esquerda
+  .branding {
+    img {
+      padding-top: 1rem;
+      height: 10rem;
+      width: auto;
+    }
+  }
+
+  // Segunda coluna: menu centralizado
+  .navigation {
+    justify-self: center;
+
+    ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    li a {
+      text-decoration: none;
+      font-size: 1.5rem;
+      color: $nav-link-color;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border: 1px solid transparent;
+      transition: border $transition-speed ease;
+
+      &:hover {
+        border: 1px solid $nav-link-color;
+        background-color: #f39c12;
+        border-radius: 4px;
+      }
+    }
+  }
+
+  // Terceira coluna: slogan à direita
+  .slogan {
+    justify-self: end;
+    font-size: 1.5rem;
+    color: $text-color;
+  }
+}
