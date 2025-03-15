@@ -6,6 +6,8 @@ export default function QRCodeGenerator() {
   const [link, setLink] = useState("");
   const [showQRCode, setShowQRCode] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
+  const [bgColor, setBgColor] = useState("#ffffff"); // cor padrão branca
+  const [qrSize, setQrSize] = useState(256); // tamanho padrão
   const { setCustomIcon, customIconURL } = useCustomIcon();
 
   const generateQRCode = () => {
@@ -42,10 +44,34 @@ export default function QRCodeGenerator() {
               }
             />
           </label>
+          <label>
+            Tamanho do QR Code:
+            <input
+              type="range"
+              min="128"
+              max="512"
+              value={qrSize}
+              onChange={(e) => setQrSize(Number(e.target.value))}
+            />
+            <span>{qrSize}px</span>
+          </label>
+          <label>
+            Escolha a cor de fundo:
+            <input
+              type="color"
+              value={bgColor}
+              onChange={(e) => setBgColor(e.target.value)}
+            />
+          </label>
         </div>
       )}
       {showQRCode && (
-        <QRCodeDisplay link={link} customIconURL={customIconURL} />
+        <QRCodeDisplay
+          link={link}
+          customIconURL={customIconURL}
+          bgColor={bgColor}
+          size={qrSize}
+        />
       )}
     </section>
   );

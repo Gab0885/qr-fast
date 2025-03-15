@@ -5,9 +5,16 @@ import { useRef } from "react";
 interface QRCodeDisplayProps {
   link: string;
   customIconURL: string;
+  bgColor: string;
+  size: number;
 }
 
-export function QRCodeDisplay({ link, customIconURL }: QRCodeDisplayProps) {
+export function QRCodeDisplay({
+  link,
+  customIconURL,
+  bgColor,
+  size,
+}: QRCodeDisplayProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const downloadQRCode = () => {
@@ -16,7 +23,9 @@ export function QRCodeDisplay({ link, customIconURL }: QRCodeDisplayProps) {
       console.error("Canvas do QR Code não encontrado!");
       return;
     }
-    const imageData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+    const imageData = canvas
+      .toDataURL("image/png")
+      .replace("image/png", "image/octet-stream");
     const downloadLink = document.createElement("a");
     downloadLink.href = imageData;
     downloadLink.download = "qr-code.png";
@@ -25,11 +34,14 @@ export function QRCodeDisplay({ link, customIconURL }: QRCodeDisplayProps) {
     document.body.removeChild(downloadLink);
   };
 
+  // Ajusta o tamanho do ícone para ser 25% do tamanho do QR Code
+  const iconSize = Math.floor(size * 0.25);
+
   const imageSettings = customIconURL
     ? {
         src: customIconURL,
-        height: 64,
-        width: 64,
+        height: iconSize,
+        width: iconSize,
         excavate: true,
       }
     : undefined;
@@ -39,10 +51,11 @@ export function QRCodeDisplay({ link, customIconURL }: QRCodeDisplayProps) {
       <QRCodeCanvas
         ref={canvasRef}
         value={link}
-        size={256}
+        size={size}
         marginSize={3}
         level="H"
         title="QR Code"
+        bgColor={bgColor}
         imageSettings={imageSettings}
       />
       <button onClick={downloadQRCode}>Baixar QR Code</button>
