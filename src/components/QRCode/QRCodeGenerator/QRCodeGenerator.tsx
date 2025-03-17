@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { QRCodeDisplay } from "./QRCodeDisplay";
-import { useCustomIcon } from "../../hooks/useCustomIcon";
+import { QRCodeDisplay } from "../QRCodeDisplay/QRCodeDisplay";
+import { useCustomIcon } from "../../../hooks/useCustomIcon";
+import styles from "./QRCodeGenerator.module.scss"
 
 export default function QRCodeGenerator() {
   const [link, setLink] = useState("");
@@ -17,19 +18,20 @@ export default function QRCodeGenerator() {
   };
 
   return (
-    <section className="qr-generator">
+    <section className={styles.qrGenerator}>
       <input
         type="text"
         placeholder="Insira o link aqui"
         value={link}
         onChange={(e) => setLink(e.target.value)}
+        className={styles.inputField}
       />
-      <button onClick={generateQRCode}>Gerar QR Code</button>
-      <button onClick={() => setShowOptions(!showOptions)}>
+      <button className={styles.button} onClick={generateQRCode}>Gerar QR Code</button>
+      <button className={styles.button} onClick={() => setShowOptions(!showOptions)}>
         {showOptions ? "Ocultar Opções" : "Opções avançadas"}
       </button>
       {showOptions && (
-        <div className="qr-options">
+        <div className={styles.qrOptions}>
           <label>
             Ícone Customizado:
             <input

@@ -1,6 +1,7 @@
 // QRCodeDisplay.tsx
 import { QRCodeCanvas } from "qrcode.react";
 import { useRef } from "react";
+import styles from "./QRCodeDisplay.module.scss"
 
 interface QRCodeDisplayProps {
   link: string;
@@ -47,7 +48,7 @@ export function QRCodeDisplay({
     : undefined;
 
   return (
-    <div className="qr-display">
+    <div className={styles.qrDisplay}>
       <QRCodeCanvas
         ref={canvasRef}
         value={link}
@@ -58,7 +59,7 @@ export function QRCodeDisplay({
         bgColor={bgColor}
         imageSettings={imageSettings}
       />
-      <button onClick={downloadQRCode}>Baixar QR Code</button>
+      <button className={styles.downloadButton} onClick={downloadQRCode}>Baixar QR Code</button>
     </div>
   );
 }

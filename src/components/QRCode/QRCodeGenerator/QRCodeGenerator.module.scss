@@ -1,0 +1,85 @@
+.qrGenerator {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.inputField {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.button {
+  padding: 12px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #555;
+  }
+}
+
+.qrOptions {
+  padding: 20px;
+  margin-top: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+
+  label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+
+    input {
+      display: block;
+      margin-top: 8px;
+    }
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .qrGenerator {
+    max-width: 90%;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .inputField {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .button {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+
+  .qrOptions {
+    padding: 15px;
+
+    label {
+      margin-bottom: 10px;
+      font-size: 0.85rem;
+
+      input {
+        margin-top: 6px;
+      }
+    }
+  }
+}
