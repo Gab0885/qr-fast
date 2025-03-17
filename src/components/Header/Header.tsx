@@ -1,13 +1,14 @@
 import logo from "@/assets/images/icon.png";
 import { Link } from "react-router-dom";
+import styles from "./Header.module.scss"
 
 export default function Header() {
   return (
-    <header>
-      <div className="branding">
+    <header className={styles.header}>
+      <div className={styles.branding}>
         <img src={logo} alt="logo do aplicativo" />
       </div>
-      <nav className="navigation">
+      <nav className={styles.navigation}>
         <ul>
           <li>
             <Link to={"/home"}>Gerar QR Code</Link>
@@ -18,7 +19,7 @@ export default function Header() {
         </ul>
       </nav>
 
-        <p className="slogan">Seu QR Code em um clique!</p>
+        <p className={styles.slogan}>Seu QR Code em um clique!</p>
     </header>
   );
 }

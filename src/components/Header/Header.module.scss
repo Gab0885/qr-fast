@@ -1,27 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@use "../../styles/_variables" as *;
 
-// Variáveis
-$primary-font: "Poppins", sans-serif;
-$secondary-font: "Roboto", sans-serif;
-
-$header-bg: #e7dfc6;
-$text-color: #4d4d4d;
-$nav-link-color: #2274a5;
-$transition-speed: 0.3s;
-
-// Reset e Estilos Globais
-* {
-  font-family: $primary-font;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-// Header
 header {
-  height: 10rem;
+  max-height: 10rem;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr; /* Logo, navegação, slogan */
   align-items: center;
   background-color: $header-bg;
   padding: 0 2rem;
@@ -29,9 +11,10 @@ header {
   // Primeira coluna: logo à esquerda
   .branding {
     img {
-      padding-top: 1rem;
-      height: 10rem;
+      margin-top: 1.3rem;
       width: auto;
+      height: auto;
+      max-height: 8rem;
     }
   }
 
@@ -51,7 +34,7 @@ header {
       color: $nav-link-color;
       font-weight: 500;
       padding: 0.5rem 1rem;
-      border: 1px solid transparent;
+      border: 1px solid $text-color;
       transition: border $transition-speed ease;
 
       &:hover {
