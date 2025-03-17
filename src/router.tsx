@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "./components/RootLayout";
-import QRCodeGenerator from "./components/QRCode/QRCodeGenerator";
+import QRCodeGenerator from "./components/QRCode/QRCodeGenerator/QRCodeGenerator";
 
 const router = createBrowserRouter([
   {
