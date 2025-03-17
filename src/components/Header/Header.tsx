@@ -11,7 +11,7 @@ export default function Header() {
       <nav className={styles.navigation}>
         <ul>
           <li>
-            <Link to={"/home"}>Gerar QR Code</Link>
+            <Link to={"/"}>Gerar QR Code</Link>
           </li>
           <li>
             <Link to={"/faq"}>FAQ</Link>
