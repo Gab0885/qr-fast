@@ -1,0 +1,49 @@
+@use "../../styles/variables" as *;
+
+.footer {
+  background-color: $header-bg;
+  color: $text-color;
+  text-align: center;
+  padding: 1rem;
+  font-size: 1rem;
+  border-top: 2px solid $border-footer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: $shadow-footer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: $color-danger;
+    stroke: $color-danger;
+    margin-bottom: 2px;
+    transition: fill 0.3s ease;
+  }
+
+  a {
+    text-decoration: none;
+    color: $text-color;
+    font-weight: 600;
+    transition: color 0.3s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+      color: $color-tertiary;
+    }
+  }
+
+  /* Estilo para o hover do SVG */
+  svg:hover {
+    fill: $color-accent;
+    stroke: $color-accent;
+  }
+}

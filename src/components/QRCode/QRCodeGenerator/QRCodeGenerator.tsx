@@ -19,9 +19,10 @@ export default function QRCodeGenerator() {
 
   return (
     <section className={styles.qrGenerator}>
+      <h1>Tela de geração de QR Code</h1>
       <input
         type="text"
-        placeholder="Insira o link aqui"
+        placeholder="Insira o texto ou link para gerar o QR Code"
         value={link}
         onChange={(e) => setLink(e.target.value)}
         className={styles.inputField}

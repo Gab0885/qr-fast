@@ -1,12 +1,13 @@
 @use "../../styles/_variables" as *;
 
 header {
-  max-height: 10rem;
+  max-height: 7rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr; /* Logo, navegação, slogan */
   align-items: center;
   background-color: $header-bg;
   padding: 0 2rem;
+  box-shadow: $shadow-header;
 
   // Primeira coluna: logo à esquerda
   .branding {
@@ -14,7 +15,7 @@ header {
       margin-top: .3rem;
       width: auto;
       height: auto;
-      max-height: 8rem;
+      max-height: 6rem;
     }
   }
 
@@ -34,13 +35,14 @@ header {
       color: $nav-link-color;
       font-weight: 500;
       padding: 0.5rem 1rem;
-      border: 2px solid #032a3c;
+      border: 2px solid $border-color-dark;
+      border-radius: $border-radius-sm;
       transition: border $transition-speed ease;
 
       &:hover {
         border: 1px solid $nav-link-color;
-        background-color: #f39c12;
-        border-radius: 4px;
+        background-color: $color-secondary;
+        border-radius: $border-radius-sm;
       }
     }
   }

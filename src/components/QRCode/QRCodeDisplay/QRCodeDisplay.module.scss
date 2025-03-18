@@ -1,3 +1,5 @@
+@use "@/styles/_variables.scss" as *;
+
 .qrDisplay {
   display: flex;
   flex-direction: column;
@@ -9,15 +11,15 @@
   canvas {
     max-width: 100%; // garante que o canvas não ultrapasse o container
     height: auto;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    border: 1px solid $border-color-light;
+    border-radius: $border-radius-md;
     margin-bottom: 15px;
   }
 }
 
 .downloadButton {
   padding: 10px 18px;
-  background-color: #007bff;
+  background-color: $button-bg;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -27,7 +29,7 @@
   display: block;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: $button-bg-hover;
   }
 }
 
