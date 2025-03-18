@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "./components/RootLayout";
-import QRCodeGenerator from "./components/QRCode/QRCodeGenerator/QRCodeGenerator";
+import Home from "./pages/Home";
 
 const router = createBrowserRouter([
   {
@@ -9,7 +9,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true, // corresponde à rota "/"
-        element: <QRCodeGenerator />,
+        element: <Home />,
       },
       {
         path: "faq",
