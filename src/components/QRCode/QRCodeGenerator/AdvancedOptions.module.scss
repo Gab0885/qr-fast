@@ -1,0 +1,51 @@
+@use "@/styles/_variables.scss" as *;
+
+.qrOptions {
+  padding: 20px;
+  margin-top: 20px;
+  border: 1px solid $border-color-alt;
+  border-radius: 4px;
+  background-color: $bg-light;
+}
+
+/* Cada grupo de opções recebe seu estilo específico */
+.customIcon,
+.customSize,
+.customIconSize,
+.customIconBackground,
+.customColor {
+  margin-bottom: 15px;
+
+  label {
+    display: block;
+    font-size: 0.9rem;
+
+    input {
+      display: block;
+      margin-top: 8px;
+    }
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .qrOptions {
+    padding: 15px;
+  }
+
+  .customIcon,
+  .customSize,
+  .customIconSize,
+  .customIconBackground,
+  .customColor {
+    margin-bottom: 10px;
+
+    label {
+      font-size: 0.85rem;
+
+      input {
+        margin-top: 6px;
+      }
+    }
+  }
+}
