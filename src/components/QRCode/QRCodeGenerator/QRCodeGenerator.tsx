@@ -14,6 +14,7 @@ export default function QRCodeGenerator() {
   const [keepIconBackground, setKeepIconBackground] = useState(false);
   const { setCustomIcon, customIconURL } = useCustomIcon();
 
+  // Gera o QR Code se o texto/link não estiver vazio.
   const generateQRCode = () => {
     if (link.trim()) {
       setShowQRCode(true);

@@ -14,6 +14,15 @@ type AdvancedOptionsProps = {
   setBgColor: (color: string) => void;
 };
 
+/*
+  Componente com controles para:
+  - Upload de ícone.
+  - Tamanho do QR Code.
+  - Tamanho do ícone.
+  - Manutenção do fundo do ícone.
+  - Seleção de cor de fundo.
+*/
+
 export default function AdvancedOptions({
   setCustomIcon,
   qrSize,
