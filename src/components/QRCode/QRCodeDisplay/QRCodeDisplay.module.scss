@@ -11,31 +11,58 @@
   canvas {
     max-width: 100%; // garante que o canvas não ultrapasse o container
     height: auto;
-    border: 1px solid $border-color-light;
+    border: 3px solid $border-color-light;
     border-radius: $border-radius-md;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
   }
 }
 
-.downloadButton {
+// Container para os botões, alinhando-os de forma responsiva
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+// Estilização padrão dos botões de download e copiar
+.downloadButton,
+.copyButton {
   padding: 10px 18px;
   background-color: $button-bg;
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s;
-  margin-top: 10px;
-  display: block;
+  transition: background-color 0.3s, color 0.3s;
 
   &:hover {
     background-color: $button-bg-hover;
   }
 }
 
+// Classe para indicar sucesso, alterando o background e hover
+.success {
+  background-color: $button-alt-bg;
+
+  &:hover{
+    background-color: $button-alt-bg-hover
+  }
+}
+
+// Classe para indicar erro, alterando o background e hover
+.error {
+  background-color: $color-danger;
+
+  &:hover {
+    background-color: $color-danger-hover;
+  }
+}
+
 /* Responsividade adicional */
 @media (max-width: 768px) {
-  .downloadButton {
+  .downloadButton,
+  .copyButton {
     padding: 8px 14px;
     font-size: 0.9rem;
   }
