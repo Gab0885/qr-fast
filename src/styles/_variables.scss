@@ -11,9 +11,10 @@ $text-color: #d3d3d3; // Texto principal sobre fundo escuro
 $color-primary: #007bff; // Cor primária para links, botões e elementos de destaque
 $nav-link-color: #03CEA4; // Utilizada na navegação (header)
 $color-secondary: color.adjust($header-bg, $lightness: -10%); // Usada em estados hover e destaques (ex.: hover no menu)
-$color-danger: #f64348; // Cor para ícones e ações críticas (ex.: ícones do footer)
+$color-danger: #f64348; // Cor para ícones e ações críticas (ex.: ícones do footer, botão de error)
+$color-danger-hover: color.adjust($color-danger, $lightness: -20%); // Cor de destaque para o hover de botões de error
 $color-accent: #eac435; // Cor de destaque para hovers (ex.: hover nos SVG)
-$color-tertiary: #03CEA4; // Cor de destaque para o link do footer
+$color-tertiary: #03CEA4; // Cor de destaque para o link do footer e botões de sucesso
 
 /* Fundos Alternativos */
 $content-bg: #ffffff; // Fundo para containers e seções principais
