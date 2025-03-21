@@ -10,6 +10,7 @@ import styles from "./QRCodeDisplay.module.scss";
   - size: Tamanho do QR Code.
   - iconPercentage?: Percentual do tamanho do ícone em relação ao QR Code.
   - excavate?: Se true, o componente remove o fundo da imagem (excavate); se false, mantém o fundo.
+  - downloadFormat: Formato que a imagem será salva ao baixo o QR Code.
 */
 interface QRCodeDisplayProps {
   link: string;
@@ -18,6 +19,7 @@ interface QRCodeDisplayProps {
   size: number;
   iconPercentage?: number;
   excavate: boolean;
+  downloadFormat: "png" | "jpeg";
 }
 
 type Status = "idle" | "success" | "error";
@@ -27,29 +29,40 @@ export function QRCodeDisplay({
   customIconURL,
   bgColor,
   size,
-  iconPercentage = 25, // valor inicial de 25%
+  iconPercentage = 25,
   excavate = true, // valor padrão: remove o fundo
+  downloadFormat,
 }: QRCodeDisplayProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [downloadStatus, setDownloadStatus] = useState<Status>("idle");
   const [copyStatus, setCopyStatus] = useState<Status>("idle");
 
+  // Função auxiliar para disparar o download
+  const triggerDownload = (url: string, filename: string) => {
+    const linkElement = document.createElement("a");
+    linkElement.href = url;
+    linkElement.download = filename;
+    document.body.appendChild(linkElement);
+    linkElement.click();
+    document.body.removeChild(linkElement);
+  };
+
   const downloadQRCode = () => {
-    const canvas = canvasRef.current;
-    if (!canvas) {
+    const errorHandler = () => {
       setDownloadStatus("error");
       setTimeout(() => setDownloadStatus("idle"), 2000);
       return;
-    }
+    };
+
+    const canvas = canvasRef.current;
+    if (!canvas) return errorHandler();
+
+    const mimeType = downloadFormat === "jpeg" ? "image/jpeg" : "image/png";
+    const extension = downloadFormat === "jpeg" ? "jpeg" : "png";
     const imageData = canvas
-      .toDataURL("image/png")
-      .replace("image/png", "image/octet-stream");
-    const downloadLink = document.createElement("a");
-    downloadLink.href = imageData;
-    downloadLink.download = "qr-code.png";
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    document.body.removeChild(downloadLink);
+      .toDataURL(mimeType)
+      .replace(mimeType, "image/octet-stream");
+    triggerDownload(imageData, `qr-code.${extension}`);
 
     setDownloadStatus("success");
     setTimeout(() => setDownloadStatus("idle"), 2000);
@@ -62,24 +75,29 @@ export function QRCodeDisplay({
       setTimeout(() => setCopyStatus("idle"), 2000);
       return;
     }
-    canvas.toBlob((blob) => {
-      if (!blob) {
-        setCopyStatus("error");
-        setTimeout(() => setCopyStatus("idle"), 2000);
-        return;
-      }
-      const item = new ClipboardItem({ "image/png": blob });
-      navigator.clipboard.write([item]).then(
-        () => {
-          setCopyStatus("success");
-          setTimeout(() => setCopyStatus("idle"), 2000);
-        },
-        () => {
+    canvas.toBlob(
+      (blob) => {
+        if (!blob) {
           setCopyStatus("error");
           setTimeout(() => setCopyStatus("idle"), 2000);
+          return;
         }
-      );
-    });
+        const item = new ClipboardItem({
+          [downloadFormat === "jpeg" ? "image/jpeg" : "image/png"]: blob,
+        });
+        navigator.clipboard.write([item]).then(
+          () => {
+            setCopyStatus("success");
+            setTimeout(() => setCopyStatus("idle"), 2000);
+          },
+          () => {
+            setCopyStatus("error");
+            setTimeout(() => setCopyStatus("idle"), 2000);
+          }
+        );
+      },
+      downloadFormat === "jpeg" ? "image/jpeg" : "image/png"
+    );
   };
 
   // Calcula o tamanho do ícone conforme o percentual definido

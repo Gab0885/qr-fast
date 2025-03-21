@@ -12,6 +12,7 @@ export default function QRCodeGenerator() {
   const [qrSize, setQrSize] = useState(256);
   const [iconPercentage, setIconPercentage] = useState(25);
   const [keepIconBackground, setKeepIconBackground] = useState(false);
+  const [downloadFormat, setDownloadFormat] = useState<"png" | "jpeg">("png");
   const { setCustomIcon, customIconURL } = useCustomIcon();
 
   // Gera o QR Code se o texto/link não estiver vazio.
@@ -52,6 +53,8 @@ export default function QRCodeGenerator() {
           setKeepIconBackground={setKeepIconBackground}
           bgColor={bgColor}
           setBgColor={setBgColor}
+          downloadFormat={downloadFormat}
+          setDownloadFormat={setDownloadFormat}
         />
       )}
 
@@ -63,6 +66,7 @@ export default function QRCodeGenerator() {
           size={qrSize}
           iconPercentage={iconPercentage}
           excavate={keepIconBackground}
+          downloadFormat={downloadFormat}
         />
       )}
     </section>

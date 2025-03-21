@@ -13,6 +13,8 @@ type AdvancedOptionsProps = {
   setKeepIconBackground: (value: boolean) => void;
   bgColor: string;
   setBgColor: (color: string) => void;
+  downloadFormat: "png" | "jpeg";
+  setDownloadFormat: (value: "png" | "jpeg") => void;
 };
 
 export default function AdvancedOptions({
@@ -25,6 +27,8 @@ export default function AdvancedOptions({
   setKeepIconBackground,
   bgColor,
   setBgColor,
+  downloadFormat,
+  setDownloadFormat,
 }: AdvancedOptionsProps) {
   const handleIconChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -129,6 +133,28 @@ export default function AdvancedOptions({
             onChange={(e) => setBgColor(e.target.value)}
           />
           <ReactTooltip id="customColorTip" opacity={1.0} place="right" />
+        </label>
+      </div>
+
+      <div className={styles.downloadFormat}>
+        <label>
+          Formato de Download:
+          <FaQuestionCircle
+            data-tooltip-id="downloadFormatTip"
+            data-tooltip-content="Selecione o formato de imagem para download: PNG ou JPEG. (Padrão: PNG)"
+            className={styles.tooltipIcon}
+            aria-label="Mais informações sobre o formato de download"
+          />
+          <select
+            value={downloadFormat}
+            onChange={(e) =>
+              setDownloadFormat(e.target.value as "png" | "jpeg")
+            }
+          >
+            <option value="png">PNG</option>
+            <option value="jpeg">JPEG</option>
+          </select>
+          <ReactTooltip id="downloadFormatTip" opacity={1.0} place="right" />
         </label>
       </div>
     </div>
