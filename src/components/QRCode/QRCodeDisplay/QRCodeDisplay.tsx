@@ -1,6 +1,9 @@
 import { QRCodeCanvas } from "qrcode.react";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import styles from "./QRCodeDisplay.module.scss";
+import { useDownloadQRCode } from "../../../hooks/useDownloadQRCode";
+import { useCopyQRCode } from "../../../hooks/useCopyQRCode";
+import { QRCodeActions } from "../QRCodeActions/QRCodeActions";
 
 /* 
   Propriedades esperadas pelo componente:
@@ -22,83 +25,18 @@ interface QRCodeDisplayProps {
   downloadFormat: "png" | "jpeg";
 }
 
-type Status = "idle" | "success" | "error";
-
 export function QRCodeDisplay({
   link,
   customIconURL,
   bgColor,
   size,
   iconPercentage = 25,
-  excavate = true, // valor padrão: remove o fundo
+  excavate = true,
   downloadFormat,
 }: QRCodeDisplayProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [downloadStatus, setDownloadStatus] = useState<Status>("idle");
-  const [copyStatus, setCopyStatus] = useState<Status>("idle");
-
-  // Função auxiliar para disparar o download
-  const triggerDownload = (url: string, filename: string) => {
-    const linkElement = document.createElement("a");
-    linkElement.href = url;
-    linkElement.download = filename;
-    document.body.appendChild(linkElement);
-    linkElement.click();
-    document.body.removeChild(linkElement);
-  };
-
-  const downloadQRCode = () => {
-    const errorHandler = () => {
-      setDownloadStatus("error");
-      setTimeout(() => setDownloadStatus("idle"), 2000);
-      return;
-    };
-
-    const canvas = canvasRef.current;
-    if (!canvas) return errorHandler();
-
-    const mimeType = downloadFormat === "jpeg" ? "image/jpeg" : "image/png";
-    const extension = downloadFormat === "jpeg" ? "jpeg" : "png";
-    const imageData = canvas
-      .toDataURL(mimeType)
-      .replace(mimeType, "image/octet-stream");
-    triggerDownload(imageData, `qr-code.${extension}`);
-
-    setDownloadStatus("success");
-    setTimeout(() => setDownloadStatus("idle"), 2000);
-  };
-
-  const copyQRCode = () => {
-    const canvas = canvasRef.current;
-    if (!canvas) {
-      setCopyStatus("error");
-      setTimeout(() => setCopyStatus("idle"), 2000);
-      return;
-    }
-    canvas.toBlob(
-      (blob) => {
-        if (!blob) {
-          setCopyStatus("error");
-          setTimeout(() => setCopyStatus("idle"), 2000);
-          return;
-        }
-        const item = new ClipboardItem({
-          [downloadFormat === "jpeg" ? "image/jpeg" : "image/png"]: blob,
-        });
-        navigator.clipboard.write([item]).then(
-          () => {
-            setCopyStatus("success");
-            setTimeout(() => setCopyStatus("idle"), 2000);
-          },
-          () => {
-            setCopyStatus("error");
-            setTimeout(() => setCopyStatus("idle"), 2000);
-          }
-        );
-      },
-      downloadFormat === "jpeg" ? "image/jpeg" : "image/png"
-    );
-  };
+  const { downloadQRCode, downloadStatus } = useDownloadQRCode(downloadFormat);
+  const { copyQRCode, copyStatus } = useCopyQRCode(downloadFormat);
 
   // Calcula o tamanho do ícone conforme o percentual definido
   const iconSize = Math.floor(size * (iconPercentage / 100));
@@ -132,40 +70,12 @@ export function QRCodeDisplay({
         bgColor={bgColor}
         imageSettings={imageSettings}
       />
-      <div className={styles.buttons}>
-        <button
-          className={`${styles.downloadButton} ${
-            downloadStatus === "success"
-              ? styles.success
-              : downloadStatus === "error"
-              ? styles.error
-              : ""
-          }`}
-          onClick={downloadQRCode}
-        >
-          {downloadStatus === "success"
-            ? "Baixado com sucesso!"
-            : downloadStatus === "error"
-            ? "Erro ao baixar QR Code"
-            : "Baixar QR Code"}
-        </button>
-        <button
-          className={`${styles.copyButton} ${
-            copyStatus === "success"
-              ? styles.success
-              : copyStatus === "error"
-              ? styles.error
-              : ""
-          }`}
-          onClick={copyQRCode}
-        >
-          {copyStatus === "success"
-            ? "Copiado com sucesso!"
-            : copyStatus === "error"
-            ? "Erro ao copiar QR Code"
-            : "Copiar QR Code"}
-        </button>
-      </div>
+      <QRCodeActions
+        downloadQRCode={() => downloadQRCode(canvasRef.current)}
+        downloadStatus={downloadStatus}
+        copyQRCode={() => copyQRCode(canvasRef.current)}
+        copyStatus={copyStatus}
+      />
     </div>
   );
 }
