@@ -1,7 +1,7 @@
 @use "../../styles/_variables" as *;
 
 header {
-  max-height: 7rem;
+  height: 7rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr; /* Logo, navegação, slogan */
   align-items: center;
@@ -12,7 +12,6 @@ header {
   // Primeira coluna: logo à esquerda
   .branding {
     img {
-      margin-top: .3rem;
       width: auto;
       height: auto;
       max-height: 6rem;
@@ -24,6 +23,7 @@ header {
     justify-self: center;
 
     ul {
+      margin: 0;
       display: flex;
       gap: 1.5rem;
       list-style: none;
@@ -49,6 +49,7 @@ header {
 
   // Terceira coluna: slogan à direita
   .slogan {
+    margin: 0;
     justify-self: end;
     font-size: 1.5rem;
     color: $text-color;
