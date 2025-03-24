@@ -1,4 +1,4 @@
-@use './_variables' as *;
+@use "./_variables" as *;
 
 // Reset e Estilos Globais
 * {
@@ -6,4 +6,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+// Remove transições e animações para usuários que preferem reduzir movimentos (acessibilidade)
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
 }

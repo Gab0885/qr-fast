@@ -14,7 +14,7 @@ export default function Header() {
             <Link to={"/"}>Gerar QR Code</Link>
           </li>
           <li>
-            <Link to={"/faq"}>FAQ</Link>
+            <Link to={"/faq"}>Dúvidas</Link>
           </li>
         </ul>
       </nav>

@@ -98,7 +98,7 @@ export default function AdvancedOptions({
 
       <div className={styles.customIconBackground}>
         <label>
-          Manter fundo da imagem:
+          Manter fundo do ícone:
           <FaQuestionCircle
             data-tooltip-id="customIconBackgroundTip"
             data-tooltip-content="Marque para manter o fundo original da imagem (não removerá o fundo)."

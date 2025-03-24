@@ -54,4 +54,35 @@ header {
     font-size: 1.5rem;
     color: $text-color;
   }
+
+  // Responsividade para telas menores
+  @media (max-width: 768px) {
+    height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    padding: 1rem;
+    gap: 1rem;
+    text-align: center;
+
+    .branding {
+      img {
+        max-height: 5rem; // ajuste para caber melhor em telas pequenas
+        margin-bottom: .5rem;
+      }
+    }
+
+    .navigation {
+      justify-self: center;
+      ul {
+        flex-direction: column;
+        gap: 1.8rem;
+      }
+    }
+
+    .slogan {
+      justify-self: center;
+      font-size: 1.2rem;
+      margin-top: .5rem;
+    }
+  }
 }
