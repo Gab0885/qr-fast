@@ -43,9 +43,9 @@ export function QRCodeDisplay({
 
   // Define o nível de redundância baseado no percentual do ícone
   let errorCorrectionLevel: "M" | "Q" | "H" = "M";
-  if (iconPercentage > 25 && iconPercentage <= 40) {
+  if (iconPercentage > 25 && iconPercentage <= 35) {
     errorCorrectionLevel = "Q";
-  } else if (iconPercentage > 40) {
+  } else if (iconPercentage > 35) {
     errorCorrectionLevel = "H";
   }
 
