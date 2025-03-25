@@ -5,14 +5,29 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  overflow-x: hidden; // previne overflow horizontal
+  overflow-x: auto; // permite rolagem horizontal se o QR code for maior que o container
   padding: 0 10px;
 
   canvas {
-    max-width: 100%; // garante que o canvas não ultrapasse o container
+    // Permite que o canvas mantenha seu tamanho natural quando ampliado pelo usuário
+    width: auto;
+    max-width: none;
     height: auto;
     border: 3px solid $border-color-light;
     border-radius: $border-radius-md;
     margin-bottom: 20px;
+  }
+}
+
+// Media queries para ajustar o padding em telas menores
+@media (max-width: 768px) {
+  .qrDisplay {
+    padding: 0 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .qrDisplay {
+    padding: 0 3px;
   }
 }

@@ -24,7 +24,7 @@ export default function QRCodeGenerator() {
 
   return (
     <section className={styles.qrGenerator}>
-      <h1>Tela de geração de QR Code</h1>
+      <h1 className={styles.title}>Crie seu QR Code Aqui</h1>
       <input
         type="text"
         placeholder="Insira o texto ou link para gerar o QR Code"
