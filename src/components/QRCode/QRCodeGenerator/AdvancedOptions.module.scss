@@ -1,59 +1,87 @@
 @use "@/styles/_variables.scss" as *;
 
+// Placeholder para estilos comuns dos labels
+%option-label {
+  display: block;
+  font-size: 0.9rem;
+
+  input,
+  select {
+    display: block;
+    margin-top: 7px;
+    box-sizing: border-box;
+  }
+}
+
 .qrOptions {
   padding: 20px;
   margin-top: 20px;
   border: 1px solid $border-color-alt;
   border-radius: 4px;
   background-color: $bg-light;
+  box-sizing: border-box;
 }
 
-/* Cada grupo de opções recebe seu estilo específico */
+// Grupos de opções
 .customIcon,
 .customSize,
 .customIconSize,
 .customIconBackground,
-.customColor {
-  margin-bottom: 15px;
-
-  label {
-    display: block;
-    font-size: 0.9rem;
-
-    input {
-      display: block;
-      margin-top: 8px;
-    }
-  }
-}
-
+.customColor,
 .downloadFormat {
   margin-bottom: 15px;
 
   label {
-    display: block;
-    font-size: 0.9rem;
+    @extend %option-label;
+  }
+}
 
+// Largura específica dos campos de entrada
+.customIcon,
+.customIconSize,
+.customSize {
+  label {
+    input,
     select {
-      display: block;
-      margin-top: 8px;
+      width: 10rem;
+    }
+  }
+}
+
+// Para .customIcon, sobrescreve a largura do input para 100% na base
+.customIcon {
+  label {
+    input {
+      width: 100%;
+    }
+  }
+}
+
+// Para downloadFormat, define largura de 15% para inputs e selects
+.downloadFormat {
+  label {
+    input,
+    select {
+      width: 15%;
     }
   }
 }
 
 .tooltipIcon {
   margin-left: 0.5rem;
-  color: $button-alt-bg; /* Cor padrão, você pode alterar conforme sua paleta */
+  color: $button-alt-bg;
   cursor: pointer;
   font-size: 1rem;
   transition: color 0.2s ease-in-out;
 }
 
 .tooltipIcon:hover {
-  color: #0056b3; /* Cor ao passar o mouse */
+  color: $color-primary;
 }
 
-/* Responsividade */
+// Breakpoints para diferentes tamanhos de tela:
+
+// Dispositivos médios (até 768px)
 @media (max-width: 768px) {
   .qrOptions {
     padding: 15px;
@@ -61,17 +89,84 @@
 
   .customIcon,
   .customSize,
-  .customIconSize,
+  .customIconSize {
+    margin-bottom: 10px;
+
+    label {
+      margin-bottom: 1.3rem;
+
+      input,
+      select {
+        width: 12rem;
+      }
+    }
+  }
+
   .customIconBackground,
   .customColor {
     margin-bottom: 10px;
 
     label {
-      font-size: 0.85rem;
+      margin-bottom: 1.3rem;
+    }
+  }
 
+  // Para .customIcon, altera a largura do input para 85%
+  .customIcon {
+    label {
       input {
-        margin-top: 6px;
+        width: 85%;
       }
     }
+  }
+}
+
+// Dispositivos pequenos (até 480px)
+@media (max-width: 480px) {
+  .qrOptions {
+    padding: 10px;
+    margin-top: 10px;
+  }
+
+  .customIcon,
+  .customSize,
+  .customIconSize,
+  .customIconBackground,
+  .customColor,
+  .downloadFormat {
+    margin-bottom: 8px;
+
+    label {
+      font-size: 0.9rem;
+
+      input,
+      select {
+        margin-top: 4px;
+      }
+    }
+  }
+
+  // Para .customIcon, garante que o input ocupe 100% da largura
+  .customIcon {
+    label {
+      input {
+        width: 100%;
+      }
+    }
+  }
+
+  // Para downloadFormat, define largura de 4rem para inputs e selects
+  .downloadFormat {
+    label {
+      input,
+      select {
+        width: 4rem;
+      }
+    }
+  }
+
+  .tooltipIcon {
+    font-size: 0.9rem;
+    margin-left: 0.3rem;
   }
 }
