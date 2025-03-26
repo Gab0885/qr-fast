@@ -29,18 +29,21 @@ Você pode, então, personalizar (se desejar) e fazer o download para usar como 
   },
   {
     question: "Como personalizar o QR Code (cores, tamanho, ícone)?",
-    answer: `Após gerar o QR Code, você verá opções para personalizar:
+    answer: `Para personalizar seu QR Code, clique no botão 'Opções avançadas'. Você encontrará opções simples para customização, como:
 - Ícone Customizável: Selecione um ícone para colocar no centro do seu QR Code.
-- Tamanho do QR Code: Ajuste a dimensão da imagem (por exemplo, 256px, 512px etc.).
-- Tamanho do Ícone: Defina a proporção do ícone dentro do QR Code.
+- Tamanho do QR Code: Ajuste a dimensão da imagem (por exemplo, 256px ou 512px)
+- Tamanho do Ícone: Defina o tamanho do ícone dentro do QR Code
 - Manter fundo da imagem: Escolha se deseja fundo transparente ou não.
+- Cor de fundo: Selecione uma nova cor para o fundo do QR COde, se desejar.
+- Formato do Download: Escolha o tipo de arquivo para salvar o QR Code (PNG ou JPG).
 
-A personalização torna o seu QR Code mais atrativo, mas sempre teste para garantir que ele ainda possa ser lido facilmente.`,
+
+Essas personalizações deixam o seu QR Code mais atrativo. Lembre-se de testá-lo para garantir que continue fácil de ler.`,
   },
   {
     question: "Como faço para salvar ou baixar o QR Code?",
     answer:
-      "Depois de gerar e personalizar o seu QR Code, clique no botão “Baixar QR Code” que aparecerá abaixo ou ao lado do QR Code. O arquivo será salvo no seu dispositivo (computador ou celular) no formato PNG",
+      "Após gerar e, se desejar, personalizar o seu QR Code, clique no botão 'Baixar QR Code', que aparece logo abaixo dele. O arquivo será salvo automaticamente no seu dispositivo no formato PNG ou JPEG, conforme sua escolha.",
   },
   {
     question: "Qualquer celular consegue ler um QR Code?",
@@ -49,7 +52,8 @@ A personalização torna o seu QR Code mais atrativo, mas sempre teste para gara
   },
   {
     question: "Como faço para ter certeza de que meu QR Code está funcionando?",
-    answer: `Abra a câmera do seu smartphone ou use um aplicativo leitor de QR Code. Aponte para o QR Code e verifique se o link ou conteúdo abre corretamente. Se não funcionar, tente melhorar a iluminação, aproximar mais a câmera ou verificar se o QR Code não foi redimensionado de forma que atrapalhe a leitura.`,
+    answer:
+      "Abra a câmera do seu smartphone ou use um aplicativo leitor de QR Code. Aponte para o código e veja se o link ou o conteúdo abre corretamente. Se não funcionar, tente melhorar a iluminação, aproximar a câmera ou verifique se o QR Code não foi alterado de forma que dificulte a leitura. Se você personalizou o QR Code (como mudar o ícone, o tamanho do ícone ou a cor de fundo), tome cuidado para não comprometer seu funcionamento.",
   },
   {
     question: "Posso criar QR Codes para qualquer tipo de conteúdo?",
@@ -81,9 +85,9 @@ Tente aumentar o tamanho e garantir bom contraste para uma leitura correta.`,
       "Sempre verifique se o link ou conteúdo do QR Code é seguro. Evite redirecionar para sites suspeitos ou que possam comprometer a segurança do usuário. Mantenha um bom contraste nas cores para que a leitura seja fácil.",
   },
   {
-    question: "É possível deixar o fundo do QR Code transparente?",
+    question: "É possível deixar transparente o fundo do ícone no QR Code?",
     answer:
-      "Sim. Em “Manter fundo da imagem”, você pode escolher a opção que gera o QR Code com fundo transparente.",
+      "Sim. Ao desmarcar a opção 'Manter fundo do ícone', o QR Code será gerado com fundo transparente. Porém, essa opção só funciona se o ícone original já tiver fundo transparente.",
   },
   {
     question:
