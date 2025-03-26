@@ -1,10 +1,12 @@
 import { useState } from "react";
 
 export function useCopyQRCode(downloadFormat: "png" | "jpeg") {
+  // Estado para controlar o status da cópia: "idle", "success" ou "error"
   const [copyStatus, setCopyStatus] = useState<"idle" | "success" | "error">(
     "idle"
   );
 
+  // Copia a imagem do QR Code do canvas para a área de transferência.
   const copyQRCode = (canvas: HTMLCanvasElement | null) => {
     if (!canvas) {
       setCopyStatus("error");

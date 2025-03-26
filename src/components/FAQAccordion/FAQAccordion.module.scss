@@ -1,9 +1,11 @@
+// Container da FAQ
 .faqContainer {
   background: #f0f0f0;
   padding: 60px 20px;
   min-height: 100vh;
 }
 
+// Título da FAQ
 .title {
   font-size: 2.5rem;
   font-weight: bold;
@@ -11,6 +13,7 @@
   color: #333;
 }
 
+// Item do acordeão
 .accordionItemCustom {
   margin-bottom: 20px;
   border-radius: 8px;
@@ -18,6 +21,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+// Cabeçalho do acordeão
 .accordionHeaderCustom {
   background-color: #fff;
   padding: 20px;
@@ -26,6 +30,7 @@
   border: none;
 }
 
+// Corpo do acordeão
 .accordionBodyCustom {
   background-color: #fff;
   padding: 20px;

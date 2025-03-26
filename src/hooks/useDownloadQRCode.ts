@@ -14,6 +14,7 @@ export function useDownloadQRCode(downloadFormat: "png" | "jpeg") {
     document.body.removeChild(linkElement);
   };
 
+  // Baixa o QR Code a partir do canvas.
   const downloadQRCode = (canvas: HTMLCanvasElement | null) => {
     if (!canvas) {
       setDownloadStatus("error");

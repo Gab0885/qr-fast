@@ -1,6 +1,7 @@
 @use "../../styles/variables" as *;
 
 .footer {
+  // Estilos básicos do rodapé
   background-color: $header-bg;
   color: $text-color;
   text-align: center;
@@ -8,6 +9,7 @@
   font-size: 1rem;
   border-top: 2px solid $border-footer;
 
+  // Layout flex para centralização dos elementos
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,6 +17,7 @@
   box-shadow: $shadow-footer;
   transition: background-color 0.3s ease, color 0.3s ease;
 
+  // Estilos para ícones SVG dentro do rodapé
   svg {
     width: 16px;
     height: 16px;
@@ -24,19 +27,21 @@
     transition: fill 0.3s ease;
   }
 
+  // Estilos para links dentro do rodapé
   a {
     text-decoration: none;
     color: $text-color;
     font-weight: 600;
     transition: color 0.3s ease;
 
+    // Efeito hover para links
     &:hover {
       transform: translateY(-1px);
       color: $color-tertiary;
     }
   }
 
-  /* Estilo para o hover do SVG */
+  // Efeito hover para ícones SVG
   svg:hover {
     fill: $color-accent;
     stroke: $color-accent;
