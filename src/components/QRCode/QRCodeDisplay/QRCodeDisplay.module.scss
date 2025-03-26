@@ -1,5 +1,6 @@
 @use "@/styles/_variables.scss" as *;
 
+// Container para exibição do QR Code
 .qrDisplay {
   display: flex;
   flex-direction: column;
@@ -8,6 +9,7 @@
   overflow-x: auto; // permite rolagem horizontal se o QR code for maior que o container
   padding: 0 10px;
 
+  // Estilização do canvas do QR Code
   canvas {
     // Permite que o canvas mantenha seu tamanho natural quando ampliado pelo usuário
     width: auto;
@@ -19,13 +21,16 @@
   }
 }
 
-// Media queries para ajustar o padding em telas menores
+// Breakpoints para diferentes tamanhos de tela:
+
+// Dispositivos médios (até 768px)
 @media (max-width: 768px) {
   .qrDisplay {
     padding: 0 5px;
   }
 }
 
+// Dispositivos pequenos (até 480px)
 @media (max-width: 480px) {
   .qrDisplay {
     padding: 0 3px;

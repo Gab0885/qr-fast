@@ -1,5 +1,6 @@
 @use "@/styles/_variables.scss" as *;
 
+// Container principal do gerador de QR Code
 .qrGenerator {
   display: flex;
   flex-direction: column;
@@ -14,6 +15,7 @@
   box-shadow: $shadow-light;
 }
 
+// Campo de entrada
 .inputField {
   width: 100%;
   padding: 12px;
@@ -22,6 +24,7 @@
   border-radius: 4px;
 }
 
+// Botões de ação
 .button {
   padding: 12px 20px;
   background-color: $button-alt-bg;
@@ -36,13 +39,16 @@
   }
 }
 
+// Título principal
 .title {
   font-size: 2.3rem;
   text-align: center;
   margin-bottom: 10px;
 }
 
-/* Responsividade */
+// Breakpoints para diferentes tamanhos de tela:
+
+// Dispositivos médios (até 768px)
 @media (max-width: 768px) {
   .qrGenerator {
     max-width: 90%;
@@ -50,9 +56,17 @@
     gap: 15px;
   }
 
+  .title {
+    font-size: 2rem;
+  }
+
   .inputField {
     font-size: 0.9rem;
     padding: 10px;
+
+    &::placeholder {
+      font-size: 1rem;
+    }
   }
 
   .qrSectionTitle {
@@ -62,5 +76,27 @@
   .button {
     padding: 10px 16px;
     font-size: 0.9rem;
+  }
+}
+
+// Dispositivos pequenos (até 450px)
+@media (max-width: 450px) {
+  .inputField {
+    &::placeholder {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+// Responsividade para telas muito pequenas (até 400px)
+@media (max-width: 400px) {
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .inputField {
+    &::placeholder {
+      font-size: 0.8rem;
+    }
   }
 }
