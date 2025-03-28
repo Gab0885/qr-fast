@@ -2,9 +2,11 @@
 
 [![Licença MIT](https://img.shields.io/badge/Licença-MIT-green)](LICENSE)
 
+## Descrição do Projeto
+
 QR Fast é uma ferramenta prática e intuitiva para criação e customização de QR Codes, desenvolvida para acelerar a transformação digital. Nossa missão é capacitar empresas e usuários individuais a conectar seus conteúdos e serviços ao mundo digital de forma imediata, sem barreiras técnicas.
 
----
+![Tela inicial do QR Fast](https://github.com/user-attachments/assets/c2555579-ff9e-45e3-b168-1a358ace350c)
 
 ## Objetivo Geral
 
